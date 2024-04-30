@@ -77,7 +77,8 @@ class Libro():
             self.paginas = int(paginas)
             self.edicion = str(edicion)
             self.editorial = str(editorial)
-            self.lugar = str(ciudad), str(pais)
+            self.pais = str(pais)
+            self.ciudad = str(ciudad)
             self.fecha_edicion = str(fecha_edicion)
         else:
             raise TypeError("El autor debe ser una instancia de la clase Persona.")
@@ -94,8 +95,10 @@ class Libro():
         return self.edicion
     def get_editorial(self):
         return self.editorial
-    def get_lugar(self):
-        return self.lugar
+    def get_ciudad(self):
+        return str(self.ciudad)
+    def get_pais(self):
+        return  str(self.pais)
     def get_fecha_edicion(self):
         return self.fecha_edicion
 
@@ -111,17 +114,22 @@ class Libro():
         self.edicion = new_edicion
     def set_editorial(self, new_editorial):
         self.editorial = new_editorial
-    def set_lugar(self, new_ciudad, new_pais):
-        self.lugar = new_ciudad, new_pais
+    def set_ciudad(self, new_ciudad):
+        self.ciudad = str(new_ciudad)
+    def set_pais(self, new_pais):
+        self.pais = str(new_pais)
     
     def informacion(self):
-        print(f"""
-            Título: {self.get_titulo()}
-            Edición : {self.get_edicion()}
-            Editorial: {self.get_editorial()}
-            ISBN: {self.get_ISBN()}
-            Páginas: {self.get_paginas()}
-            Lugar: {self.get_lugar()}
-                    """)
+        print(f"""---------------------------------
+    Título: {self.get_titulo()} - {self.get_edicion()}
+    Autor: {self.get_autor().nombre}
+    ISBN: {self.get_ISBN()}
+    Lugar: {self.get_ciudad()}, {self.get_pais()}
+    Editorial: {self.get_editorial()}
+    Páginas: {self.get_paginas()}
+---------------------------------""")
 
-p = Persona("Javier","Docente","1979-08-22")
+# Ejemplo de uso Ejercicio 5.
+# p1 = Persona("Lobato Javier","Docente","1979-08-22")
+# l1 = Libro("El libro rojo", p1, "A-0030-Z", 666, "7ma edición", "Upbr", "Bariloche", "Argentina", "1996-07-06")
+# l1.informacion()
