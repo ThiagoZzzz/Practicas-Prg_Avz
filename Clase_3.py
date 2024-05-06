@@ -56,17 +56,21 @@ class Cancion():
         print(f"-{self.titulo}-, by {self.autor}.")
 
 #Ejercicio 5.
-from datetime import date
+from datetime import datetime, date
 class Persona():
     def __init__(self, nombre, ocupacion, fecha_nacimiento):    #la fecha de nacimiento se recibe con el siguiente formato -> AAAA-MM-DD
         self.nombre = str(nombre)
         self.ocupacion = str(ocupacion)
-        self.fecha_nacimiento = fecha_nacimiento
+        self.fecha_nacimiento = datetime.strptime(fecha_nacimiento, "%Y-%m-%d").date()
     
     def calcular_edad(self):
+
         hoy = date.today()
         edad = hoy.year - self.fecha_nacimiento.year - ((hoy.month, hoy.day) < (self.fecha_nacimiento.month, self.fecha_nacimiento.day))
         return edad
+    
+    def __str__(self):
+        return (f"{self.nombre}, {self.calcular_edad()} --> {self.ocupacion}.")
 
 class Libro():
     def __init__(self, titulo, autor, ISBN, paginas, edicion, editorial, ciudad, pais, fecha_edicion):
@@ -129,7 +133,8 @@ class Libro():
     Páginas: {self.get_paginas()}
 ---------------------------------""")
 
-# Ejemplo de uso Ejercicio 5.
-# p1 = Persona("Lobato Javier","Docente","1979-08-22")
+# Ejemplos de uso.
+p1 = Persona("Lobato Javier","Docente","1979-08-22")
+print(p1)
 # l1 = Libro("El libro rojo", p1, "A-0030-Z", 666, "7ma edición", "Upbr", "Bariloche", "Argentina", "1996-07-06")
 # l1.informacion()
