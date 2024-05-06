@@ -64,7 +64,6 @@ class Persona():
         self.fecha_nacimiento = datetime.strptime(fecha_nacimiento, "%Y-%m-%d").date()
     
     def calcular_edad(self):
-
         hoy = date.today()
         edad = hoy.year - self.fecha_nacimiento.year - ((hoy.month, hoy.day) < (self.fecha_nacimiento.month, self.fecha_nacimiento.day))
         return edad
@@ -134,7 +133,7 @@ class Libro():
 ---------------------------------""")
 
 # Ejemplos de uso.
-p1 = Persona("Lobato Javier","Docente","1979-08-22")
-print(p1)
+# p1 = Persona("Lobato Javier","Docente","1979-08-22")
+# print(p1)
 # l1 = Libro("El libro rojo", p1, "A-0030-Z", 666, "7ma edición", "Upbr", "Bariloche", "Argentina", "1996-07-06")
 # l1.informacion()
