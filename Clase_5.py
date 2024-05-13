@@ -60,3 +60,60 @@ Area: {self.area()}""")
 # print(triángulo)
 # circulo = Circulo(5)
 # print(circulo)
+
+# Modelando UMl: ProfesorAyudante --> Profesor --> PersonalUniversitario
+#                                '--> Alumno   --> PersonalUniversitario
+
+class PersonalUniversitario():
+    def __init__(self, nombre, universidad):
+        self.__universidad = universidad
+        self.__nombre = nombre
+
+    def get_universidad(self):
+        return self.__universidad
+    def get_nombre(self):
+        return self.__nombre
+
+class Profesor(PersonalUniversitario):
+    def __init__(self, nombre, universidad, catedra, comision):
+        super().__init__(nombre, universidad)
+        self.catedra = catedra
+        self.comision = comision
+    
+    def datos_profesor(self):
+        print(f"""
+Nombre: {self.get_nombre()}.
+Universidad: {self.get_universidad()}. 
+Cátedra: {self.catedra}.
+Comisión: {self.comision}.
+""")
+
+class Alumno(PersonalUniversitario):
+    def __init__(self, nombre, universidad, carrera):
+        super().__init__(nombre, universidad)
+        self.carrera = carrera
+        self.cursando = []
+    
+    def agregar_cursada(self, x):
+        self.cursando.append(x)
+    
+    def datos_alumno(self):
+            print(f"""
+Nombre: {self.get_nombre()}.
+Universidad: {self.get_universidad()}.
+Carrera: {self.carrera}.
+Materias cursando actualmente: {self.cursando}.
+""")
+
+# Ejemplos de uso
+# personal_universitario = PersonalUniversitario("John Doe", "University of Examples")
+# print(personal_universitario.get_universidad())  
+# print(personal_universitario.get_nombre())
+
+# profesor = Profesor("Joe", "University of Examples", "Mathematics", 3)
+# profesor.datos_profesor()
+
+# alumno = Alumno("Jane Doe", "University of Examples", "Computer Science")
+# alumno.agregar_cursada("Algebra")
+# alumno.agregar_cursada("Calculus")
+# alumno.datos_alumno()
